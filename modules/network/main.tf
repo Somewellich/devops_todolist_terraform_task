@@ -1,6 +1,6 @@
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
-  address_space       = var.vnet_address_space
+  address_space       = [var.vnet_address_prefix]
   location            = var.location
   resource_group_name = var.resource_group_name
 }
@@ -9,7 +9,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = var.subnet_name
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = var.subnet_address_prefixes
+  address_prefixes     = [var.subnet_address_prefix]
 }
 
 resource "random_integer" "dns_suffix" {
@@ -23,7 +23,7 @@ resource "azurerm_public_ip" "pip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
-  domain_name_label   = "matetask${random_integer.dns_suffix.result}"
+  domain_name_label   = "${var.dns_label}${random_integer.dns_suffix.result}"
 }
 
 resource "azurerm_network_security_group" "nsg" {

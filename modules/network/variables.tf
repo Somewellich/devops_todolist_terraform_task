@@ -14,10 +14,10 @@ variable "vnet_name" {
   default     = "vnet"
 }
 
-variable "vnet_address_space" {
+variable "vnet_address_prefix" {
   description = "Address space VNet"
-  type        = list(string)
-  default     = ["10.0.0.0/16"]
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
 variable "subnet_name" {
@@ -26,10 +26,10 @@ variable "subnet_name" {
   default     = "default"
 }
 
-variable "subnet_address_prefixes" {
-  description = "subnet address prefix"
-  type        = list(string)
-  default     = ["10.0.0.0/24"]
+variable "subnet_address_prefix" {
+  description = "Subnet address prefix"
+  type        = string
+  default     = "10.0.0.0/24"
 }
 
 variable "network_security_group_name" {
@@ -42,4 +42,9 @@ variable "public_ip_name" {
   description = "Public IP name"
   type        = string
   default     = "linuxboxpip"
+}
+variable "dns_label" {
+  description = "DNS label prefix"
+  type        = string
+  default     = "matetask"
 }

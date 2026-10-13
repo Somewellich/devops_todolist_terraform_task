@@ -32,11 +32,11 @@ variable "ssh_key_public" {
 }
 
 variable "subnet_id" {
-  description = "username admin for Linux"
+  description = "Subnet ID for network interface"
   type        = string
 }
 
 variable "public_ip" {
-  description = "username admin for Linux"
+  description = "Public IP ID for network interface"
   type        = string
 }
