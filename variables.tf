@@ -18,8 +18,8 @@ variable "virtual_network_name" {
 
 variable "vnet_address_prefix" {
   description = "Address space VNet"
-  type        = list(string)
-  default     = ["10.0.0.0/16"]
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
 variable "subnet_name" {
@@ -30,8 +30,8 @@ variable "subnet_name" {
 
 variable "subnet_address_prefix" {
   description = "subnet address prefix"
-  type        = list(string)
-  default     = ["10.0.0.0/24"]
+  type        = string
+  default     = "10.0.0.0/24"
 }
 
 variable "network_security_group_name" {
